@@ -10,3 +10,6 @@ C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.p
 C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.exe
 C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.pdb
 C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.csprojResolveAssemblyReference.cache
+C:\Users\ucl\Source\Repos\Simulador_de_Gastos\SimuladorGastos\bin\Debug\SimuladorGastos.exe.config
+C:\Users\ucl\Source\Repos\Simulador_de_Gastos\SimuladorGastos\obj\Debug\SimuladorGastos.exe
+C:\Users\ucl\Source\Repos\Simulador_de_Gastos\SimuladorGastos\obj\Debug\SimuladorGastos.pdb

@@ -181,6 +181,8 @@ namespace SimuladorGastos
             {
                 case 1:
 
+                    //Alteração
+
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Cadastro de Eletromestico na Sala Escolhido \n");
                     Console.WriteLine("Informe o nome do eletrodomestico:");
