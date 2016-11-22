@@ -1,0 +1,12 @@
+c:\users\usuário\documents\visual studio 2015\Projects\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.exe.config
+c:\users\usuário\documents\visual studio 2015\Projects\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.exe
+c:\users\usuário\documents\visual studio 2015\Projects\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.pdb
+c:\users\usuário\documents\visual studio 2015\Projects\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.csprojResolveAssemblyReference.cache
+c:\users\usuário\documents\visual studio 2015\Projects\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.exe
+c:\users\usuário\documents\visual studio 2015\Projects\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.pdb
+C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.exe.config
+C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.exe
+C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.pdb
+C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.exe
+C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\bin\Debug\SimuladorGastos.pdb
+C:\Users\ucl\Desktop\SimuladorGastos\SimuladorGastos\obj\Debug\SimuladorGastos.csprojResolveAssemblyReference.cache
