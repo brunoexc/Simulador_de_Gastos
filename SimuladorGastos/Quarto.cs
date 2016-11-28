@@ -34,6 +34,16 @@ namespace SimuladorGastos
             return Consumo;
         }
 
+        public float ConsumoEnergiaPadrao()
+        {
+            for (int i = 0; i < list_Padrão_ED.Count(); i++)
+            {
+                Consumo += list_Padrão_ED[i].Khw;
+            }
+
+            return Consumo;
+        }
+
         public override void ListarEletrodomestico()
         {
             Console.WriteLine("========================================================================");

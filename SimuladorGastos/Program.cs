@@ -8,9 +8,9 @@ namespace SimuladorGastos
 {
     class Program
     {
-        public static int opcao = 0;
-
-        public static Program program = new Program();        
+        public static int opcao = 0;      
+        
+                 
 
         //Objetos para navegação de metodos das subclasses do usuário
         public static Quarto quarto = new Quarto();
@@ -23,37 +23,19 @@ namespace SimuladorGastos
 
 
         //Objetos para comparação nos metodos de dicas _p = padrão e os numeros são para suas respectivas areas
-        public static Quarto quarto_p20 = new Quarto();
-        public static Sala sala_p20 = new Sala();
-        public static Banheiro banheiro_p20 = new Banheiro();
-        public static Cozinha cozinha_p20 = new Cozinha();
-        public static Sim_Gastos sim_gastos_p20 = new Sim_Gastos();
-        public static Sim_Sustentavel sim_sust_p20 = new Sim_Sustentavel();
+
+       
 
 
-        public static Quarto quarto_p40 = new Quarto();
-        public static Sala sala_p40 = new Sala();
-        public static Banheiro banheiro_p40 = new Banheiro();
-        public static Cozinha cozinha_p40 = new Cozinha();
-        public static Sim_Gastos sim_gastos_p40 = new Sim_Gastos();
-        public static Sim_Sustentavel sim_sust_p40 = new Sim_Sustentavel();
-
-
-        public static Quarto quarto_p80 = new Quarto();
-        public static Sala sala_p80 = new Sala();
-        public static Banheiro banheiro_p80 = new Banheiro();
-        public static Cozinha cozinha_p80 = new Cozinha();
-        public static Sim_Gastos sim_gastos_p80 = new Sim_Gastos();
-        public static Sim_Sustentavel sim_sust_p80 = new Sim_Sustentavel();
 
         //Objetos para comparação nos metodos de dicas _p = padrão e os numeros são para suas respectivas areas
 
 
         static void Main(string[] args)
         {
-            
-            Menu();
-            FuncionalidadesPadrões();                     
+
+            Menu();           
+                                        
 
             while (opcao != 6)
             {
@@ -179,9 +161,7 @@ namespace SimuladorGastos
 
             switch (opcao)
             {
-                case 1:
-
-                    //Alteração
+                case 1:                    
 
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Cadastro de Eletromestico na Sala Escolhido \n");
@@ -195,7 +175,6 @@ namespace SimuladorGastos
                     qtdED = int.Parse(Console.ReadLine());
 
                     eletro = new Eletrodomésticos(nome, khw, qtdED);
-
 
 
                     sala.InserirEletrodomestico(eletro);
@@ -345,9 +324,9 @@ namespace SimuladorGastos
         }
 
 
-        public static void Menu_Case4(int opcao) //METODO PARA DICAS DE ECONOMIA DA CASA TODA
+        public static void Menu_Case4(int opcao) //METODO PARA DICAS DE ECONOMIA DA CASA
         {
-
+            int area = 0;
 
             switch (opcao)
             {
@@ -355,7 +334,13 @@ namespace SimuladorGastos
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Dicas de Economia para toda a casa selecionado \n");
                     Console.WriteLine("Informe a area de sua residência \n");
+                    area = int.Parse(Console.ReadLine());
 
+                    sim_sust.SimularEconomia(area, quarto, sala, banheiro, cozinha);
+
+                    Console.ReadKey();
+
+                    Menu();
 
 
                     break;
@@ -363,6 +348,7 @@ namespace SimuladorGastos
 
                 case 2:
 
+                    
 
                     break;
 
@@ -379,99 +365,6 @@ namespace SimuladorGastos
         
 
 
-        public static void FuncionalidadesPadrões() //CRIA OS ELETRODOMESTICOS PADROES PARA SERVIR DE BASE NAS DICAS 
-        {
-
-            //Inicio da criação da Lista de Eletrodomesticos Padrões e Consumo
-
-            /*TODOS OS VALORES DESCRITOS SÃO PARA EFEITO DE BASE PARA AS DICAS APENAS, ESTIPULADOS EM CIMA DE PESQUISAS,
-              POIS OS MESMO VARIAM DE ACORDO COM A TARIFA DE CADA ESTADO E SEU TEMPO DE CONSUMO*/
-
-
-            //Padrões para uma casa com comodos de 2m² até 20m²               NOME, KHW, QTD             Consumo  | Custo(mês)
-
-            sala_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("televisão", 100, 1));          // ~100kwh |  R$5,00  
-            sala_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("computador", 80, 1));          // ~80kwh  |  R$3,00            
-            sala_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("dvd", 20, 1));                 // ~20kwh  |  R$1,00
-            sala_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 1));            // ~50kwh  |  R$2,00
-            sala_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("ventilador", 120, 1));         // ~120kwh |  R$6,00
-            sala_p20.Area_p = 20;           
-
-            quarto_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("televisão", 100, 1));
-            quarto_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("computador", 80, 1));            
-            quarto_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 1));
-            quarto_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("ventilador", 120, 1));
-            quarto_p20.Area_p = 20;            
-
-            banheiro_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("chuveiro", 120, 1));        // ~120kwh e R$6,00 
-            banheiro_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 1));
-            banheiro_p20.Area_p = 20;            
-
-            cozinha_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("geladeira", 250, 1));        // ~250kwh e R$12,00 
-            cozinha_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("maquina de lavar", 50, 1));  // ~50kwh e R$2,00 
-            cozinha_p20.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 1));
-            cozinha_p20.Area_p = 20; 
-
-
-            //Padrões para uma casa com comodos de 21m² até 40m² 
-
-            sala_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("televisão", 100, 2));
-            sala_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("arcondicionado", 150, 1));      // ~150kwh |  R$7,50
-            sala_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("computador", 80, 1));
-            sala_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("dvd", 20, 1));
-            sala_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 2));
-            sala_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("ventilador", 120, 1));
-            sala_p40.Area_p = 40;            
-
-            quarto_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("televisão", 100, 2));
-            quarto_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("arcondicionado", 150, 1));
-            quarto_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("computador", 80, 1));
-            quarto_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 2));
-            quarto_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("ventilador", 120, 2));
-            quarto_p40.Area_p = 40;         
-
-            banheiro_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("chuveiro", 120, 1));        
-            banheiro_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 3));
-            banheiro_p40.Area_p = 40;           
-
-            cozinha_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("geladeira", 250, 1));
-            cozinha_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("microondas", 80, 1));       // ~80kwh |  R$3,00
-            cozinha_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("maquina de lavar", 50, 1));  
-            cozinha_p40.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 2));
-            cozinha_p40.Area_p = 40;     
-
-
-            //Padrões para uma casa com comodos mais 40²  
-
-            sala_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("televisão", 100, 2));
-            sala_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("arcondicionado", 150, 1));     
-            sala_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("computador", 80, 2));
-            sala_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("dvd", 20, 2));
-            sala_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 4));
-            sala_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("ventilador", 120, 2));
-            sala_p80.Area_p = 40;            
-
-            quarto_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("televisão", 100, 4));
-            quarto_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("arcondicionado", 150, 2));
-            quarto_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("computador", 80, 2));
-            quarto_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 4));
-            quarto_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("ventilador", 120, 4));
-            quarto_p80.Area_p = 40;           
-
-            banheiro_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("chuveiro", 120, 2));
-            banheiro_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 6));
-            banheiro_p80.Area_p = 40;
-
-            cozinha_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("geladeira", 250, 1));
-            cozinha_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("microondas", 80, 1));       
-            cozinha_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("maquina de lavar", 50, 1));
-            cozinha_p80.InserirEletrodomesticoPadrão(new Eletrodomésticos("lampadas", 50, 4));
-            cozinha_p80.Area_p = 40;       
-
-
-            //Fim da criação da Lista de Eletrodomesticos Padrões e Consumo 
-
-        }
 
 
     }

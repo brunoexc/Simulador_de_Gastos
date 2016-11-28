@@ -10,26 +10,8 @@ namespace SimuladorGastos
     {
 
 
-        public void CalcularFatura(int i, Sala s, Quarto q, Cozinha c, Banheiro b)
+        public void CalcularFatura()
         {
-
-
-
-            Quarto c_quarto = q;
-            float c_sala = s.ConsumoEnergia();
-            float c_cozinha = c.ConsumoEnergia();
-            float c_banheiro = b.ConsumoEnergia();
-
-            float f_quarto = c_quarto*tarifa
-
-
-            switch (i)
-            {
-                case 
-
-
-
-            }
 
 
 
