@@ -34,7 +34,8 @@ namespace SimuladorGastos
         static void Main(string[] args)
         {
 
-            Menu();           
+            Menu();
+            sim_sust.FuncionalidadesPadrões();       
                                         
 
             while (opcao != 6)
@@ -334,13 +335,14 @@ namespace SimuladorGastos
             }
 
         }
+
+
         public static void Menu_Case3(int opcao)
         {
             Sim_Gastos Sim = new Sim_Gastos();
 
             switch (opcao)
             {
-
                 case 1:
                     Sim.CalcularFatura(1,quarto,sala,cozinha,banheiro);
                     Console.ReadKey();
@@ -376,16 +378,18 @@ namespace SimuladorGastos
             }
         }
 
+
         public static void Menu_Case4(int opcao) //METODO PARA DICAS DE ECONOMIA DA CASA
         {
             int area = 0;
+            int op_switch = 0;
 
             switch (opcao)
             {
                 case 1:
                     Console.WriteLine("========================================================================");
-                    Console.WriteLine("Dicas de Economia para toda a casa selecionado \n");
-                    Console.WriteLine("Informe a area de sua residência \n");
+                    Console.WriteLine("Dicas de economia para toda a casa selecionado \n");
+                    Console.WriteLine("Informe a area de sua residência");
                     area = int.Parse(Console.ReadLine());
 
                     sim_sust.SimularEconomia(area, quarto, sala, banheiro, cozinha);
@@ -399,16 +403,42 @@ namespace SimuladorGastos
 
 
                 case 2:
+                    Console.WriteLine("========================================================================");
+                    Console.WriteLine("Dicas de economia por comodo selecionado \n");  
+                    Console.WriteLine("Escolha em qual comodo deseja as dicas: \n");
+                    Console.WriteLine("1 - Sala");
+                    Console.WriteLine("2 - Cozinha");
+                    Console.WriteLine("3 - Quarto");
+                    Console.WriteLine("4 - Banheiro");
+                    Console.WriteLine("5 - Voltar ao menu principal");
+                    op_switch = int.Parse(Console.ReadLine());                     
 
-                    
+                    if (op_switch == 1 || op_switch == 2 || op_switch == 3 || op_switch == 4)
+                    {
+                        Console.WriteLine("\nInforme a area do comodo");
+                        area = int.Parse(Console.ReadLine());
+
+                        sim_sust.SimularEconomiaComodo(area, op_switch, quarto, sala, banheiro, cozinha);
+                    }
+                      
+
+                    if (op_switch == 5)
+                        Menu();
+
+                    if(op_switch < 1 || op_switch > 5)
+                    {  
+                        // CRIAR EXECÇÂO PARA SELEÇÂO ERRADA
+                    }
+
+                    Console.ReadKey();
+                    Console.Clear();
+                    Menu();
 
                     break;
-
-
-
-
-
             }
+
+
+
 
 
 

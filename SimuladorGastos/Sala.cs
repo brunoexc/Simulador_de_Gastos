@@ -27,6 +27,8 @@ namespace SimuladorGastos
 
         public override float ConsumoEnergia()
         {
+            Consumo = 0;
+
             for(int i = 0; i < list_ED.Count(); i++)
             {
                 Consumo += list_ED[i].Khw;
@@ -37,6 +39,8 @@ namespace SimuladorGastos
 
         public float ConsumoEnergiaPadrao()
         {
+            Consumo = 0;
+
             for (int i = 0; i < list_Padrão_ED.Count(); i++)
             {
                 Consumo += list_Padrão_ED[i].Khw;
@@ -49,8 +53,11 @@ namespace SimuladorGastos
         public override void ListarEletrodomestico()
         {
             Console.WriteLine("========================================================================");
-            Console.WriteLine("Lista de Eletromesticos da Sala\n");
-            Console.WriteLine("Nome               | Quantidade  | Consumo Individual  | Consumo Total |");
+            Console.WriteLine("                           Eletromésticos: Sala");            
+            Console.WriteLine("========================================================================");
+            Console.WriteLine("Eletrodoméstico    | Quantidade  | Consumo Individual  | Consumo Total |");
+            Console.WriteLine("-------------------|-------------|---------------------|---------------|");
+          
 
             int t = 0;
             float consumo_total = 0;
@@ -124,9 +131,10 @@ namespace SimuladorGastos
                     Console.WriteLine("|");
 
                     //Fim da Impressão do Consumo Total na Tabela
-            }   
+            }
 
-            Console.WriteLine("\nConsumo Geral - " + consumo_total + "\n");           
+            Console.WriteLine("___________________|_____________|_____________________|_______________|");  
+            Console.WriteLine("\nConsumo Geral: " + consumo_total + " kWh");           
             Console.WriteLine("========================================================================");
         }
 
