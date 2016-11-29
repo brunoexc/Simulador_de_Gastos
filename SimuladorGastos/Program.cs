@@ -117,7 +117,19 @@ namespace SimuladorGastos
 
                     case 3: //Calcular Fatura Escolhido no Menu Principal
 
-                         break;
+                    Console.WriteLine("=========================================================================");
+                    Console.WriteLine("Escolha uma opção:  \n");
+                    Console.WriteLine("1 - Valor gasto em energia no Quarto ");
+                    Console.WriteLine("2 - Valor gasto em energia na Sala ");
+                    Console.WriteLine("3 - Valor gasto em energia na Cozinha ");
+                    Console.WriteLine("4 - Valor gasto de energia no Banheiro ");
+                    Console.WriteLine("5 - Valor Total gasto em energia ");
+                    Console.WriteLine("6 - Voltar ao menu principal");
+                    op_switch = int.Parse(Console.ReadLine());
+
+                    Menu_Case3(op_switch);
+
+                    break;
 
                     case 4: //Dicas de economia Escolhido no Menu Principal
 
@@ -322,7 +334,47 @@ namespace SimuladorGastos
             }
 
         }
+        public static void Menu_Case3(int opcao)
+        {
+            Sim_Gastos Sim = new Sim_Gastos();
 
+            switch (opcao)
+            {
+
+                case 1:
+                    Sim.CalcularFatura(1,quarto,sala,cozinha,banheiro);
+                    Console.ReadKey();
+                    Menu();
+                    break;
+                case 2:
+                    Sim.CalcularFatura(2, quarto, sala, cozinha, banheiro);
+                    Console.ReadKey();
+                    Menu();
+                    break;
+                case 3:
+                    Sim.CalcularFatura(3, quarto, sala, cozinha, banheiro);
+                    Console.ReadKey();
+                    Menu();
+                    break;
+                case 4:
+                    Sim.CalcularFatura(4, quarto, sala, cozinha, banheiro);
+                    Console.ReadKey();
+                    Menu();
+                    break;
+                case 5:
+                   /*
+                    Sim.CalcularFaturaTotal(sala, cozinha, banheiro, quarto);
+                    Console.ReadKey();
+                    program.Menu();
+                */   
+                break;
+
+                case 6:
+                    Menu();
+                    Console.ReadKey();
+                    break;
+            }
+        }
 
         public static void Menu_Case4(int opcao) //METODO PARA DICAS DE ECONOMIA DA CASA
         {
