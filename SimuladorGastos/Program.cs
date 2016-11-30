@@ -446,11 +446,11 @@ namespace SimuladorGastos
                     Menu();
                     break;
                 case 5:
-                   /*
+                   
                     Sim.CalcularFaturaTotal(sala, cozinha, banheiro, quarto);
                     Console.ReadKey();
-                    program.Menu();
-                */   
+                    Menu();
+                  
                 break;
 
                 case 6:

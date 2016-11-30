@@ -22,3 +22,9 @@ C:\Users\alexm\Source\Repos\Simulador_de_Gastos2\SimuladorGastos\obj\Debug\Simul
 C:\Users\alexm\Source\Repos\Simulador_de_Gastos2\SimuladorGastos\bin\Debug\SimuladorGastos.exe
 C:\Users\alexm\Source\Repos\Simulador_de_Gastos2\SimuladorGastos\bin\Debug\SimuladorGastos.pdb
 C:\Users\alexm\Source\Repos\Simulador_de_Gastos2\SimuladorGastos\obj\Debug\SimuladorGastos.csprojResolveAssemblyReference.cache
+C:\Users\alexm\Source\Repos\Simulador_de_Gastos3\SimuladorGastos\bin\Debug\SimuladorGastos.exe.config
+C:\Users\alexm\Source\Repos\Simulador_de_Gastos3\SimuladorGastos\obj\Debug\SimuladorGastos.exe
+C:\Users\alexm\Source\Repos\Simulador_de_Gastos3\SimuladorGastos\obj\Debug\SimuladorGastos.pdb
+C:\Users\alexm\Source\Repos\Simulador_de_Gastos3\SimuladorGastos\bin\Debug\SimuladorGastos.exe
+C:\Users\alexm\Source\Repos\Simulador_de_Gastos3\SimuladorGastos\bin\Debug\SimuladorGastos.pdb
+C:\Users\alexm\Source\Repos\Simulador_de_Gastos3\SimuladorGastos\obj\Debug\SimuladorGastos.csprojResolveAssemblyReference.cache
