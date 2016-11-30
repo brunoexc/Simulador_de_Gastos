@@ -64,7 +64,7 @@ namespace SimuladorGastos
                 {
                     Console.WriteLine("\nSua casa encontra-se fora dos nossos padrões de consumo de energia!");
                     Console.WriteLine("Consumo da Residencia: " + c_total + " kWh");
-                    Console.WriteLine("Consumo esperado para residência de até 40m²: " + c_total_p40 + " kWh");
+                    Console.WriteLine("Consumo esperado para residência entre 21m² e 40m²: " + c_total_p40 + " kWh");
                     Console.WriteLine("Quantidade ideal que pode-se economizar: " + (c_total - c_total_p40) + " kWh");
                     Console.WriteLine("Para mais detalhes confira o consumo individual dos comodos!");
                 }
@@ -72,7 +72,7 @@ namespace SimuladorGastos
                 {
                     Console.WriteLine("\nParabens sua casa encontra-se dentro dos nossos padrões de economia\n");
                     Console.WriteLine("Consumo da residência: " + c_total + " kWh");
-                    Console.WriteLine("Consumo esperado para residência de até 40m²: " + c_total_p40 + " kWh");
+                    Console.WriteLine("Consumo esperado para residência entre 21m² e 40m²: " + c_total_p40 + " kWh");
                 }
 
 
@@ -112,16 +112,17 @@ namespace SimuladorGastos
                         if (c_sala > c_sala_p20)
                         {
                             economia = c_sala - c_sala_p20;
-                            Console.WriteLine("\nComodo Sala: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_sala_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_sala + " kWh");
+                            Console.WriteLine("\nComodo Sala: Possui consumo mais alto que nosso padrão!");                            
+                            Console.WriteLine("\nConsumo do Comodo: " + c_sala + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_sala_p20 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Sala: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_sala_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_sala + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_sala + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_sala_p20 + " kWh");
+                            
                         }  
 
                     if (area > 20 && area <= 40)                    
@@ -129,15 +130,16 @@ namespace SimuladorGastos
                         {
                             economia = c_sala - c_sala_p40;
                             Console.WriteLine("\nComodo Sala: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_sala_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_sala + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_sala + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_sala_p40 + " kWh");                            
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Sala: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_sala_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_sala + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_sala + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_sala_p40 + " kWh");
+                            
                         } 
 
                     if (area > 40)                    
@@ -145,16 +147,16 @@ namespace SimuladorGastos
                         {
                             economia = c_sala - c_sala_p80;
                             Console.WriteLine("\nComodo Sala: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_sala_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_sala + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_sala + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_sala_p80 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
 
                         else
                         {
                             Console.WriteLine("\nComodo Sala: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_sala_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_sala + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_sala + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_sala_p80 + " kWh");
                         }
 
                     Console.WriteLine("========================================================================");
@@ -168,15 +170,15 @@ namespace SimuladorGastos
                         {
                             economia = c_cozinha - c_cozinha_p20;
                             Console.WriteLine("\nComodo Cozinha: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_cozinha_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_cozinha_p20 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Cozinha: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_cozinha_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_cozinha_p20 + " kWh");
                         }
                 
 
@@ -185,15 +187,15 @@ namespace SimuladorGastos
                         {
                             economia = c_cozinha - c_cozinha_p40;
                             Console.WriteLine("\nComodo Cozinha: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_cozinha_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_cozinha_p40 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Cozinha: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_cozinha_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_cozinha_p40 + " kWh");
                         }
 
                     if (area > 40)                   
@@ -201,15 +203,15 @@ namespace SimuladorGastos
                         {
                             economia = c_cozinha - c_cozinha_p80;
                             Console.WriteLine("\nComodo Cozinha: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_cozinha_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_cozinha_p80 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Cozinha: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_cozinha_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_cozinha + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_cozinha_p80 + " kWh");
                         }
 
                     Console.WriteLine("========================================================================");
@@ -223,15 +225,15 @@ namespace SimuladorGastos
                         {
                             economia = c_quarto - c_quarto_p20;
                             Console.WriteLine("\nComodo Quarto: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_quarto_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_quarto_p20 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Quarto: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_quarto_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_quarto_p20 + " kWh");
                         }                 
 
                     if (area > 20 && area <= 40)          
@@ -239,15 +241,15 @@ namespace SimuladorGastos
                         {
                             economia = c_quarto - c_quarto_p40;
                             Console.WriteLine("\nComodo Quarto: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_quarto_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_quarto_p40 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Quarto: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_quarto_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_quarto_p40 + " kWh");
                         }  
 
                     if (area > 40)                  
@@ -255,15 +257,15 @@ namespace SimuladorGastos
                         {
                             economia = c_quarto - c_quarto_p80;
                             Console.WriteLine("\nComodo Quarto: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_quarto_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_quarto_p80 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Quarto: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_quarto_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_quarto + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_quarto_p80 + " kWh");
                         }
 
                     Console.WriteLine("========================================================================");
@@ -277,15 +279,15 @@ namespace SimuladorGastos
                         {
                             economia = c_banheiro - c_banheiro_p20;
                             Console.WriteLine("\nComodo Banheiro: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_banheiro_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_banheiro_p20 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh"); ;
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Banheiro: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_banheiro_p20 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo de até 20m²: " + c_banheiro_p20 + " kWh"); ;
                         }                
 
                     if (area > 20 && area <= 40) 
@@ -293,15 +295,15 @@ namespace SimuladorGastos
                         {
                             economia = c_banheiro - c_banheiro_p40;
                             Console.WriteLine("\nComodo Banheiro: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_banheiro_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_banheiro_p40 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Banheiro: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_banheiro_p40 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("\nConsumo do comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo entre 21 e 40m²: " + c_banheiro_p40 + " kWh");
                         }
 
                     if (area > 40)                
@@ -309,15 +311,15 @@ namespace SimuladorGastos
                         {
                             economia = c_banheiro - c_banheiro_p80;
                             Console.WriteLine("\nComodo Banheiro: Possui consumo mais alto que nosso padrão!");
-                            Console.WriteLine("\nConsumo Esperado: " + c_banheiro_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_banheiro_p80 + " kWh");
                             Console.WriteLine("Quantidade que pode-se economizar: " + economia + " kWh");
                         }
                         else
                         {
                             Console.WriteLine("\nComodo Banheiro: Encontra-se dentro de nossos padrões de consumo");
-                            Console.WriteLine("\nConsumo Esperado: " + c_banheiro_p80 + " kWh");
-                            Console.WriteLine("Consumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("\nConsumo do Comodo: " + c_banheiro + " kWh");
+                            Console.WriteLine("Consumo esperado para comodo maior que 40m²: " + c_banheiro_p80 + " kWh");
                         }
 
                     Console.WriteLine("========================================================================");

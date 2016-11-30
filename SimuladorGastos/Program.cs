@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace SimuladorGastos
 {
+    public class OpcaoErradaMenuException : Exception
+    {      
+        
+    }
+    public class AreaInvalidaException : Exception
+    {
+
+
+    }
+
+
     class Program
     {
         public static int opcao = 0;      
@@ -21,22 +32,11 @@ namespace SimuladorGastos
         public static Sim_Sustentavel sim_sust = new Sim_Sustentavel();
         //Objetos para navegação de metodos das subclasses do usuário
 
-
-        //Objetos para comparação nos metodos de dicas _p = padrão e os numeros são para suas respectivas areas
-
-       
-
-
-
-        //Objetos para comparação nos metodos de dicas _p = padrão e os numeros são para suas respectivas areas
-
-
         static void Main(string[] args)
         {
 
             Menu();
-            sim_sust.FuncionalidadesPadrões();       
-                                        
+            sim_sust.FuncionalidadesPadrões(); 
 
             while (opcao != 6)
             {
@@ -52,14 +52,6 @@ namespace SimuladorGastos
 
         public static int Menu()  // MENU PRINCIPAL
         {
-
-            /*BLOCO PARA LEITURA DO LOG DO USUARIO, A DISCUTIR ONDE SERA REGISTRADO            
-            
-            FileStream fs = new FileStream("");
-            StreamReader sr = new StreamReader(fs);           
-            
-            */       
-
             Console.Clear();
             Console.WriteLine("========================================================================");
             Console.WriteLine("                  Bem Vindo ao Simulador de Gastos");
@@ -71,7 +63,25 @@ namespace SimuladorGastos
             Console.WriteLine("4 - Dicas de Economia");
             Console.WriteLine("5 - Enviar bug ou sugestão");
             Console.WriteLine("6 - Sair do Simulador");
-            opcao = int.Parse(Console.ReadLine());
+
+            try
+            {
+                opcao = int.Parse(Console.ReadLine());
+
+                if(opcao < 1 || opcao > 6)
+                {
+                    throw new OpcaoErradaMenuException();
+                }
+
+            }
+            catch(OpcaoErradaMenuException e)
+            {
+                Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
+                Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                Console.ReadKey();
+                Menu();
+            }      
+            
 
             return opcao;
         }
@@ -93,8 +103,28 @@ namespace SimuladorGastos
                          Console.WriteLine("3 - Quarto");
                          Console.WriteLine("4 - Banheiro");
                          Console.WriteLine("5 - Voltar ao menu principal");
-                         op_switch = int.Parse(Console.ReadLine());
- 
+
+                         try
+                         {
+                            op_switch = int.Parse(Console.ReadLine());
+
+                            if (op_switch < 1 || op_switch > 5)
+                            {
+                               throw new OpcaoErradaMenuException();
+                            }
+
+                         }
+
+                         catch (OpcaoErradaMenuException e)
+                         {
+                            Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
+                            Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                            Console.ReadKey();
+                            Console.Clear();
+                            Switch_Menu(opcao);
+                         }
+
+
                          Menu_Case1(op_switch); // METODO COM SWITCH PARA CADASTRAR ELETRODOMESTICO EM COMODOS ESPECIFICOS
 
                          break;
@@ -110,9 +140,27 @@ namespace SimuladorGastos
                          Console.WriteLine("4 - Listar Banheiro");
                          Console.WriteLine("5 - Listar Todos os Comodos");
                          Console.WriteLine("6 - Voltar ao menu principal");
-                         op_switch = int.Parse(Console.ReadLine());
 
-                         Menu_Case2(op_switch); // METODO PARA LISTAR ELETRODOMESTICO EM COMODOS ESPECIFICOS OU CASA TODA
+                         try
+                         {
+                            op_switch = int.Parse(Console.ReadLine());
+
+                            if (op_switch < 1 || op_switch > 6)
+                            { 
+                               throw new OpcaoErradaMenuException();
+                            }
+
+                         }
+                         catch (OpcaoErradaMenuException e)
+                         {
+                           Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
+                           Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                           Console.ReadKey();
+                           Console.Clear();
+                           Switch_Menu(opcao);
+                         }
+
+                    Menu_Case2(op_switch); // METODO PARA LISTAR ELETRODOMESTICO EM COMODOS ESPECIFICOS OU CASA TODA
 
                     break;
 
@@ -126,7 +174,25 @@ namespace SimuladorGastos
                     Console.WriteLine("4 - Valor gasto de energia no Banheiro ");
                     Console.WriteLine("5 - Valor Total gasto em energia ");
                     Console.WriteLine("6 - Voltar ao menu principal");
-                    op_switch = int.Parse(Console.ReadLine());
+
+                    try
+                    {
+                        op_switch = int.Parse(Console.ReadLine());
+
+                        if (op_switch < 1 || op_switch > 6)
+                        {
+                            throw new OpcaoErradaMenuException();
+                        }
+
+                    }
+                    catch (OpcaoErradaMenuException e)
+                    {
+                        Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
+                        Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Switch_Menu(opcao);
+                    }
 
                     Menu_Case3(op_switch);
 
@@ -139,13 +205,30 @@ namespace SimuladorGastos
                         Console.WriteLine("Escolha uma opção: \n");
                         Console.WriteLine("1 - Dicas de Economia para toda a casa");
                         Console.WriteLine("2 - Dicas de Economia para um comodo especifico");
-                        Console.WriteLine("3 - Voltar ao menu principal");
+                        Console.WriteLine("3 - Voltar ao menu principal");                       
+
+                    try
+                    {
                         op_switch = int.Parse(Console.ReadLine());
 
-                        Menu_Case4(op_switch); // METODO COM SWITCH PARA FORNERCER DICAS DE ECONOMIA
+                        if (op_switch < 1 || op_switch > 3)
+                        {
+                            throw new OpcaoErradaMenuException();
+                        }
+                    }
+                    catch (OpcaoErradaMenuException e)
+                    {
+                        Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
+                        Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Switch_Menu(opcao);
+                    }
+
+                    Menu_Case4(op_switch); // METODO COM SWITCH PARA FORNERCER DICAS DE ECONOMIA
 
 
-                        break;
+                   break;
 
                     case 5: // Enviar bug ou sugestão Escolhido no Menu Principal
 
@@ -327,8 +410,7 @@ namespace SimuladorGastos
                     break;
 
                 case 6:
-                    Menu();
-                    Console.ReadKey();
+                    Menu();                    
                     break;
 
 
@@ -389,8 +471,25 @@ namespace SimuladorGastos
                 case 1:
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Dicas de economia para toda a casa selecionado \n");
-                    Console.WriteLine("Informe a area de sua residência");
-                    area = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Informe a area de sua residência");                    
+
+                    try
+                    {
+                        area = int.Parse(Console.ReadLine());
+
+                        if (area < 5)
+                        {
+                            throw new AreaInvalidaException();
+                        }
+                    }
+                    catch (AreaInvalidaException e)
+                    {
+                        Console.WriteLine("\nArea fornecida é invalida ou abaixo do esperado");
+                        Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Menu_Case4(opcao);
+                    }
 
                     sim_sust.SimularEconomia(area, quarto, sala, banheiro, cozinha);
 
@@ -411,41 +510,60 @@ namespace SimuladorGastos
                     Console.WriteLine("3 - Quarto");
                     Console.WriteLine("4 - Banheiro");
                     Console.WriteLine("5 - Voltar ao menu principal");
-                    op_switch = int.Parse(Console.ReadLine());                     
+                    
 
-                    if (op_switch == 1 || op_switch == 2 || op_switch == 3 || op_switch == 4)
+                    try
                     {
+                        op_switch = int.Parse(Console.ReadLine());
+
+                        if (op_switch < 1 || op_switch > 6)                        
+                            throw new OpcaoErradaMenuException();
+                       
+
+                        if(op_switch == 5)
+                            Menu();
+
+
                         Console.WriteLine("\nInforme a area do comodo");
-                        area = int.Parse(Console.ReadLine());
+                        area = int.Parse(Console.ReadLine());                           
+
+                        if (area < 5)
+                           throw new AreaInvalidaException();
+
 
                         sim_sust.SimularEconomiaComodo(area, op_switch, quarto, sala, banheiro, cozinha);
                     }
-                      
-
-                    if (op_switch == 5)
-                        Menu();
-
-                    if(op_switch < 1 || op_switch > 5)
-                    {  
-                        // CRIAR EXECÇÂO PARA SELEÇÂO ERRADA
+                    catch (OpcaoErradaMenuException e)
+                    {
+                        Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
+                        Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Menu_Case4(opcao);
                     }
-
+                    catch(AreaInvalidaException e)
+                    {
+                        Console.WriteLine("\nArea fornecida é invalida ou abaixo do esperado");
+                        Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
+                        Console.ReadKey();
+                        Console.Clear();
+                        Menu_Case4(opcao);
+                    }
+                 
                     Console.ReadKey();
                     Console.Clear();
                     Menu();
 
                     break;
+
+                case 3:
+
+                    Menu();     
+
+                    break;
             }
 
-
-
-
-
-
         }
-
-        
-
 
 
 
