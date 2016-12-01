@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,8 +44,23 @@ namespace SimuladorGastos
                 Switch_Menu(opcao);
             }
         }
+      //Cria o arquivo e inseri o dia e horário no qual acessou o sistema e o Nome do PC que foi utilizado;
+        public static void log()
+        {
 
-      
+            string Arq = @"C:\Users\alexm\Desktop\Log\log -" + DateTime.Now.ToString("HHmmddMMyyyy") + ".txt";
+            FileStream Fs = new FileStream(Arq, FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(Fs, Encoding.UTF8);
+
+            sw.WriteLine("Acesso do usuário foi :" + DateTime.Now.ToString("HH:mm:ss - dd/MM/yyyy"));
+            sw.WriteLine("O Pc utilizado é " + Environment.MachineName);
+            sw.WriteLine("A última opção escolhida no Menu principal foi - " + opcao);
+
+
+
+            sw.Close();
+
+        }
 
 
         //<<<<<<<<<<<<<<<<<<  INICIO DOS METODOS DE NAVEGAÇÃO DA MAIN >>>>>>>>>>>>>>>>>>>>>>>
@@ -80,8 +96,8 @@ namespace SimuladorGastos
                 Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                 Console.ReadKey();
                 Menu();
-            }      
-            
+            }
+            log();
 
             return opcao;
         }
