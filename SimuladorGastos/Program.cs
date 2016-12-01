@@ -20,8 +20,7 @@ namespace SimuladorGastos
 
     class Program
     {
-        public static int opcao = 0;      
-        
+        public static int opcao = 0;              
                  
 
         //Objetos para navegação de metodos das subclasses do usuário
@@ -32,38 +31,38 @@ namespace SimuladorGastos
         public static Sim_Gastos sim_gastos = new Sim_Gastos();
         public static Sim_Sustentavel sim_sust = new Sim_Sustentavel();
         //Objetos para navegação de metodos das subclasses do usuário
+        public static StreamWriter sw;
+        public static FileStream Fs;
+        public static string Arq;
+
 
         static void Main(string[] args)
         {
+            Arq = @"C:\Users\ucl\Source\Repos\Simulador_de_Gastos\log " + string.Format(DateTime.Now.ToString("dd_MM_yyyy (HH{0} mm{1} ss{2})"), "h","m","s") + ".txt";
+            Fs = new FileStream(Arq, FileMode.OpenOrCreate, FileAccess.Write);
+            sw = new StreamWriter(Fs, Encoding.UTF8);
+
+
+            sw.WriteLine("Acesso do usuário no Simulador às " + DateTime.Now.ToString("HH:mm:ss - dd/MM/yyyy"));
+            sw.WriteLine("");
 
             Menu();
             sim_sust.FuncionalidadesPadrões(); 
 
-            while (opcao != 6)
+            while (opcao != 5)
             {
                 Switch_Menu(opcao);
             }
-        }
-      //Cria o arquivo e inseri o dia e horário no qual acessou o sistema e o Nome do PC que foi utilizado;
-        public static void log()
-        {
-
-            string Arq = @"C:\Users\alexm\Desktop\Log\log -" + DateTime.Now.ToString("HHmmddMMyyyy") + ".txt";
-            FileStream Fs = new FileStream(Arq, FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(Fs, Encoding.UTF8);
-
-            sw.WriteLine("Acesso do usuário foi :" + DateTime.Now.ToString("HH:mm:ss - dd/MM/yyyy"));
-            sw.WriteLine("O Pc utilizado é " + Environment.MachineName);
-            sw.WriteLine("A última opção escolhida no Menu principal foi - " + opcao);
-
-
 
             sw.Close();
-
+            Fs.Close();
         }
 
 
-        //<<<<<<<<<<<<<<<<<<  INICIO DOS METODOS DE NAVEGAÇÃO DA MAIN >>>>>>>>>>>>>>>>>>>>>>>
+
+      
+
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  INICIO DOS METODOS DE NAVEGAÇÃO DA MAIN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
         public static int Menu()  // MENU PRINCIPAL
@@ -76,15 +75,14 @@ namespace SimuladorGastos
             Console.WriteLine("1 - Cadastrar Eletrodoméstico");
             Console.WriteLine("2 - Ver Lista de Eletrodomesticos Cadastrados");
             Console.WriteLine("3 - Calcular Fatura");
-            Console.WriteLine("4 - Dicas de Economia");
-            Console.WriteLine("5 - Enviar bug ou sugestão");
-            Console.WriteLine("6 - Sair do Simulador");
+            Console.WriteLine("4 - Dicas de Economia");            
+            Console.WriteLine("5 - Sair do Simulador");
 
             try
             {
                 opcao = int.Parse(Console.ReadLine());
 
-                if(opcao < 1 || opcao > 6)
+                if(opcao < 1 || opcao > 5)
                 {
                     throw new OpcaoErradaMenuException();
                 }
@@ -92,24 +90,36 @@ namespace SimuladorGastos
             }
             catch(OpcaoErradaMenuException e)
             {
+                sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                sw.WriteLine("Exceção OpçãoErradaMenu.Exception foi acionada no menu Menu Principal");
+                sw.WriteLine("");
+
                 Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
                 Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                 Console.ReadKey();
                 Menu();
-            }
-            log();
+            }          
+
+            
 
             return opcao;
         }
 
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< SWITCH DE OPÇAO DO MENU PRINCIPAL >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-        public static void Switch_Menu(int opcao) //SWITCH DE OPÇAO DO MENU PRINCIPAL
+        public static void Switch_Menu(int opcao) 
         {
             int op_switch = 0;
             
                 switch (opcao)
                 {
                     case 1: //Cadastro de Eletrodomestico Escolhido no Menu Principal
+
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Cadastro de Eletrodomésticos no Menu principal");
+                    sw.WriteLine("");
+
 
                          Console.WriteLine("========================================================================");
                          Console.WriteLine("Cadastro de Eletromestico Escolhido \n");
@@ -130,9 +140,12 @@ namespace SimuladorGastos
                             }
 
                          }
-
                          catch (OpcaoErradaMenuException e)
                          {
+                            sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                            sw.WriteLine("Exceção OpçãoErradaMenu.Exception foi acionada no menu Cadastro de Eletrodomésticos");
+                            sw.WriteLine("");
+
                             Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
                             Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                             Console.ReadKey();
@@ -140,12 +153,18 @@ namespace SimuladorGastos
                             Switch_Menu(opcao);
                          }
 
+                    
 
-                         Menu_Case1(op_switch); // METODO COM SWITCH PARA CADASTRAR ELETRODOMESTICO EM COMODOS ESPECIFICOS
+
+                    Menu_Case1(op_switch); // METODO COM SWITCH PARA CADASTRAR ELETRODOMESTICO EM COMODOS ESPECIFICOS
 
                          break;
 
                     case 2:  //Listar Eletrodomestico Escolhido no Menu Principal
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Listar Eletrodomésticos no Menu principal.");
+                    sw.WriteLine("");
 
                          Console.WriteLine("========================================================================");
                          Console.WriteLine("Listar de Eletromestico Cadastrados Escolhido \n");
@@ -169,6 +188,11 @@ namespace SimuladorGastos
                          }
                          catch (OpcaoErradaMenuException e)
                          {
+
+                           sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                           sw.WriteLine("Exceção OpçãoErradaMenu.Exception foi acionada no menu Cadastro de Eletrodomésticos");
+                           sw.WriteLine("");
+
                            Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
                            Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                            Console.ReadKey();
@@ -181,6 +205,10 @@ namespace SimuladorGastos
                     break;
 
                     case 3: //Calcular Fatura Escolhido no Menu Principal
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Calcular Fatura no Menu principal");
+                    sw.WriteLine("");
 
                     Console.WriteLine("=========================================================================");
                     Console.WriteLine("Escolha uma opção:  \n");
@@ -216,12 +244,16 @@ namespace SimuladorGastos
 
                     case 4: //Dicas de economia Escolhido no Menu Principal
 
-                        Console.WriteLine("========================================================================");
-                        Console.WriteLine("Dicas de Economia Selecionado \n");
-                        Console.WriteLine("Escolha uma opção: \n");
-                        Console.WriteLine("1 - Dicas de Economia para toda a casa");
-                        Console.WriteLine("2 - Dicas de Economia para um comodo especifico");
-                        Console.WriteLine("3 - Voltar ao menu principal");                       
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Dicas de Economia no Menu principal");
+                    sw.WriteLine("");
+
+                    Console.WriteLine("========================================================================");
+                    Console.WriteLine("Dicas de Economia Selecionado \n");
+                    Console.WriteLine("Escolha uma opção: \n");
+                    Console.WriteLine("1 - Dicas de Economia para toda a casa");
+                    Console.WriteLine("2 - Dicas de Economia para um comodo especifico");
+                    Console.WriteLine("3 - Voltar ao menu principal");                       
 
                     try
                     {
@@ -234,6 +266,10 @@ namespace SimuladorGastos
                     }
                     catch (OpcaoErradaMenuException e)
                     {
+                        sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                        sw.WriteLine("Exceção OpçãoErradaMenu.Exception foi acionada no menu Cadastro de Eletrodomésticos");
+                        sw.WriteLine("");
+
                         Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
                         Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                         Console.ReadKey();
@@ -246,25 +282,22 @@ namespace SimuladorGastos
 
                    break;
 
-                    case 5: // Enviar bug ou sugestão Escolhido no Menu Principal
+                    case 5:
 
+                       opcao = 5;
+                       Console.WriteLine("Obrigado por utilizar nosso sistema!");
+                       Console.ReadKey();
 
                     break;
 
-                    case 6: //Sair do Simulador Escolhido no Menu Principal
-
-                        opcao = 6;
-                        Console.WriteLine("Obrigado por utilizar nosso sistema!");
-                        Console.ReadKey();
- 
-
-                        break;
+                  
 
                  }
-            }        
+            }
 
 
-        public static void Menu_Case1(int opcao) //METODO PARA INSERIR ELETRODOMESTICOS EM COMODO
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< METODO PARA INSERIR ELETRODOMESTICOS EM COMODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        public static void Menu_Case1(int opcao) 
         {
             string nome;
             float khw;
@@ -273,7 +306,11 @@ namespace SimuladorGastos
 
             switch (opcao)
             {
-                case 1:                    
+                case 1:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Sala no menu Cadastro de Eletrodoméstico");
+                    sw.WriteLine("");
 
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Cadastro de Eletromestico na Sala Escolhido \n");
@@ -301,6 +338,10 @@ namespace SimuladorGastos
 
                 case 2:
 
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Cozinha no menu Cadastro de Eletrodoméstico");
+                    sw.WriteLine("");
+
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Cadastro de Eletromestico na Cozinha Escolhido \n");
                     Console.WriteLine("Informe o nome do eletrodomestico:");
@@ -326,6 +367,10 @@ namespace SimuladorGastos
 
                 case 3:
 
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Quarto no menu Cadastro de Eletrodoméstico");
+                    sw.WriteLine("");
+
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Cadastro de Eletromestico na Quarto Escolhido \n");
                     Console.WriteLine("Informe o nome do eletrodomestico:");
@@ -350,6 +395,10 @@ namespace SimuladorGastos
 
                 case 4:
 
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Cozinha no menu Cadastro de Eletrodoméstico");
+                    sw.WriteLine("");
+
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Cadastro de Eletromestico na Cozinha Escolhido \n");
                     Console.WriteLine("Informe o nome do eletrodomestico:");
@@ -373,6 +422,10 @@ namespace SimuladorGastos
 
                 case 5:
 
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Voltar ao Menu Principal no menu Cadastro de Eletrodomésticos");
+                    sw.WriteLine("");
+
                     Menu();
                                         
                     break;
@@ -381,13 +434,19 @@ namespace SimuladorGastos
         }
 
 
-        public static void Menu_Case2(int opcao) // METODO PARA IMPRESSAO DA LISTA DE ELETRODOMESTICO
+        // <<<<<<<<<<<<<<<<<<<<<<<<<<<<< METODO PARA IMPRESSAO DA LISTA DE ELETRODOMESTICO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        public static void Menu_Case2(int opcao) 
         {
 
             switch (opcao)
             {
 
                 case 1:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Sala no menu Listar Eletrodomésticos");
+                    sw.WriteLine("");
+
                     sala.ListarEletrodomestico();
 
                     Console.ReadKey();
@@ -395,6 +454,11 @@ namespace SimuladorGastos
                     break;
 
                 case 2:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Cozinha no menu Listar Eletrodomésticos");
+                    sw.WriteLine("");
+
                     cozinha.ListarEletrodomestico();
 
                     Console.ReadKey();
@@ -402,6 +466,11 @@ namespace SimuladorGastos
                     break;
 
                 case 3:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Quarto no menu Listar Eletrodomésticos");
+                    sw.WriteLine("");
+
                     quarto.ListarEletrodomestico();
 
                     Console.ReadKey();
@@ -409,6 +478,11 @@ namespace SimuladorGastos
                     break;
 
                 case 4:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Banheiro no menu Listar Eletrodomésticos");
+                    sw.WriteLine("");
+
                     banheiro.ListarEletrodomestico();
 
                     Console.ReadKey();
@@ -416,6 +490,11 @@ namespace SimuladorGastos
                     break;
 
                 case 5:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Todos os Comôdos no menu Listar Eletrodomésticos");
+                    sw.WriteLine("");
+
                     sala.ListarEletrodomestico();
                     cozinha.ListarEletrodomestico();
                     quarto.ListarEletrodomestico();
@@ -426,6 +505,11 @@ namespace SimuladorGastos
                     break;
 
                 case 6:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Voltar ao Menu Principal no menu Listar Eletrodomésticos");
+                    sw.WriteLine("");
+
                     Menu();                    
                     break;
 
@@ -442,42 +526,61 @@ namespace SimuladorGastos
             switch (opcao)
             {
                 case 1:
-                    Sim.CalcularFatura(1,quarto,sala,cozinha,banheiro);
-                    Console.ReadKey();
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Quarto no menu Calcular Fatura");
+                    sw.WriteLine("");
+
+                    Sim.CalcularFatura(1,quarto,sala,cozinha,banheiro);                    
                     Menu();
                     break;
                 case 2:
-                    Sim.CalcularFatura(2, quarto, sala, cozinha, banheiro);
-                    Console.ReadKey();
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Sala no menu Calcular Fatura");
+                    sw.WriteLine("");
+
+                    Sim.CalcularFatura(2, quarto, sala, cozinha, banheiro);                   
                     Menu();
                     break;
                 case 3:
-                    Sim.CalcularFatura(3, quarto, sala, cozinha, banheiro);
-                    Console.ReadKey();
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Cozinha no menu Calcular Fatura");
+                    sw.WriteLine("");
+
+                    Sim.CalcularFatura(3, quarto, sala, cozinha, banheiro);                    
                     Menu();
                     break;
                 case 4:
-                    Sim.CalcularFatura(4, quarto, sala, cozinha, banheiro);
-                    Console.ReadKey();
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Banheiro no menu Calcular Fatura");
+                    sw.WriteLine("");
+
+                    Sim.CalcularFatura(4, quarto, sala, cozinha, banheiro);                   
                     Menu();
                     break;
                 case 5:
                    
-                    Sim.CalcularFaturaTotal(sala, cozinha, banheiro, quarto);
-                    Console.ReadKey();
+                    Sim.CalcularFaturaTotal(sala, cozinha, banheiro, quarto);                    
                     Menu();
                   
                 break;
 
                 case 6:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Voltar ao Menu Principal no menu Calcular Fatura");
+                    sw.WriteLine("");
+
                     Menu();
-                    Console.ReadKey();
+                    
                     break;
             }
         }
 
-
-        public static void Menu_Case4(int opcao) //METODO PARA DICAS DE ECONOMIA DA CASA
+        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< METODO PARA DICAS DE ECONOMIA DA CASA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        public static void Menu_Case4(int opcao) 
         {
             int area = 0;
             int op_switch = 0;
@@ -485,6 +588,11 @@ namespace SimuladorGastos
             switch (opcao)
             {
                 case 1:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Dicas de Economia para Casa Toda no menu Menu Principal");
+                    sw.WriteLine("");
+
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Dicas de economia para toda a casa selecionado \n");
                     Console.WriteLine("Informe a area de sua residência");                    
@@ -500,6 +608,10 @@ namespace SimuladorGastos
                     }
                     catch (AreaInvalidaException e)
                     {
+                        sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                        sw.WriteLine("Exceção OpçãoErradaMenu.Exception foi acionada no menu Dicas de Economia para Casa Toda");
+                        sw.WriteLine("");
+
                         Console.WriteLine("\nArea fornecida é invalida ou abaixo do esperado");
                         Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                         Console.ReadKey();
@@ -518,6 +630,11 @@ namespace SimuladorGastos
 
 
                 case 2:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Dicas de Economia para os Comodos no menu Menu Principal");
+                    sw.WriteLine("");
+
                     Console.WriteLine("========================================================================");
                     Console.WriteLine("Dicas de economia por comodo selecionado \n");  
                     Console.WriteLine("Escolha em qual comodo deseja as dicas: \n");
@@ -551,6 +668,10 @@ namespace SimuladorGastos
                     }
                     catch (OpcaoErradaMenuException e)
                     {
+                        sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                        sw.WriteLine("Exceção OpçãoErradaMenu.Exception foi acionada no menu Dicas de Economia para os Comodos");
+                        sw.WriteLine("");
+
                         Console.WriteLine("\nVocê precisa escolher uma das opções acima!");
                         Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                         Console.ReadKey();
@@ -559,6 +680,10 @@ namespace SimuladorGastos
                     }
                     catch(AreaInvalidaException e)
                     {
+                        sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                        sw.WriteLine("Exceção AreaInvalidaExcpetion.Exception foi acionada no menu Dicas de Economia para os Comodos");
+                        sw.WriteLine("");
+
                         Console.WriteLine("\nArea fornecida é invalida ou abaixo do esperado");
                         Console.WriteLine("\nPressione qualquer tecla para recomeçar.");
                         Console.ReadKey();
@@ -573,6 +698,10 @@ namespace SimuladorGastos
                     break;
 
                 case 3:
+
+                    sw.Write(DateTime.Now.ToString("HH:mm:ss") + " - ");
+                    sw.WriteLine("Foi escolhida opção Voltar ao Menu Principal no menu Dicas de Economia");
+                    sw.WriteLine("");
 
                     Menu();     
 

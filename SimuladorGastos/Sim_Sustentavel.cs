@@ -28,7 +28,7 @@ namespace SimuladorGastos
         public float c_banheiro_p20, c_banheiro_p40, c_banheiro_p80;
         public float c_cozinha_p20, c_cozinha_p40, c_cozinha_p80;
 
-        public float c_total_p20, c_total_p40, c_total_p80, c_total_padrao;
+        public float c_total_p20, c_total_p40, c_total_p80;
 
 
 
